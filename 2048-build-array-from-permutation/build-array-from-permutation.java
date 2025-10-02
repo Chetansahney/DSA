@@ -1,11 +1,15 @@
 class Solution {
-    public int[] buildArray(int[] nums) 
-    { int ans[]=new int[nums.length];
-        for(int i=0;i<nums.length;i++)
-        {
-            ans[i]=nums[nums[i]];
 
+    public int[] buildArray(int[] nums) {
+        int n = nums.length;
+        // Build the final value on the first iteration
+        for (int i = 0; i < n; ++i) {
+            nums[i] += 1000 * (nums[nums[i]] % 1000);
         }
-        return ans;
+        // Modified to final value on the second iteration
+        for (int i = 0; i < n; ++i) {
+            nums[i] /= 1000;
+        }
+        return nums;
     }
 }

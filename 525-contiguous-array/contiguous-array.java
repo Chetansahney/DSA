@@ -1,3 +1,4 @@
+//same as 560,930,1074
 class Solution {
     public int findMaxLength(int[] nums) {
        HashMap <Integer, Integer> map=new HashMap<>();
@@ -6,7 +7,7 @@ class Solution {
        {
         if(nums[i]==0)
         {
-            sum+=-1;
+            sum+=-1;//replaced 0 with -1
         }
         else
         {
@@ -18,7 +19,7 @@ class Solution {
         }
         else
         {
-            length=Math.max(i-map.get(sum),length);
+            length=Math.max(i-map.get(sum),length);//if that sum already exist,then find the length of the index 
         }
         
        }

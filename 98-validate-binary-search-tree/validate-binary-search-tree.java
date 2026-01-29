@@ -14,24 +14,27 @@
  * }
  */
 class Solution {
-    public boolean isValidBST(TreeNode root) 
-    {
-        List<Integer> ans=new ArrayList<>();
-        dfs(root,ans);
-        for(int i=0;i<ans.size()-1;i++)
-        {
-            if(ans.get(i)<ans.get(i+1))continue;
-            else
-            return false;
-        }
-        return true;
+    boolean flag = true;
+    TreeNode prev = null;
+    public boolean isValidBST(TreeNode root) {
+        inorder(root);
+        return flag;
     }
-    public void dfs(TreeNode root,List<Integer>list)
-    {
-        if(root==null)return;
-        dfs(root.left,list);
-        list.add(root.val);
-        dfs(root.right,list);
+
+    private void inorder(TreeNode root) {
+        if(root == null) return;
+        
+        //traverse left substree of current node
+        inorder(root.left);
+
+        //process current node
+        if(prev != null && root.val <= prev.val) {
+            flag = false;
+            return;
+        } 
+        prev = root;
+
+        //traverse right subtree
+        inorder(root.right);
     }
-   
 }

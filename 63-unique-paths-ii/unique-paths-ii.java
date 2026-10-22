@@ -17,7 +17,7 @@ class Solution {
                     if(i>0)up=dp[i-1][j];
                     if(j>0)down=dp[i][j-1];
 
-                    dp[i][j]=(up+down);
+                    dp[i][j]=up+down;
                 }
             }
         }
